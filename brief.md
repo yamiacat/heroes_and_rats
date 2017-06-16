@@ -1,4 +1,4 @@
-# Heroes & Rats Lab
+<!-- # Heroes & Rats Lab
 
 The task is to test drive the beginnings of an adventure game!
 
@@ -11,10 +11,11 @@ Create a constructor to create a Hero character
 - A Hero has health
 - A Hero has a favourite food
 - A Hero can talk saying their name
-- A Hero has a collection of tasks to complete
+- A Hero has a collection of tasks to complete -->
 
 B. Create a constructor to create Task objects
 
+- A task should have a description
 - A task has a difficulty level
 - A task has an urgency level
 - A task has a reward
