@@ -42,5 +42,9 @@ describe("Task", function() {
     assert.strictEqual(false, task.completed);
   });
 
+  it("should have method to mark completed", function() {
+    task.complete();
+    assert.strictEqual(true, task.completed);
+  });
 
 });

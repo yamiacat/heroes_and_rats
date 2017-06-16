@@ -45,7 +45,13 @@ Task.prototype = {
   //   var returnString =  DifficultyEnum.properties[taskDifficulty].name;
   //   returnString.toString();
   //   return returnString;
-  // }
+  // },
+  complete: function() {
+    this.completed = true;
+  },
+  giveReward: function() {
+    return this.reward;
+  }
 }
 
 
