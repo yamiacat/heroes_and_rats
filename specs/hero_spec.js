@@ -15,4 +15,17 @@ describe("Hero", function(){
     assert.strictEqual("Dumpling", hero.favouriteFood);
   });
 
+  it("Should have starting health of 100", function() {
+    assert.strictEqual(100, hero.health);
+  });
+
+  it("Should be able say their name", function() {
+    assert.strictEqual("I am Mulan!", hero.speak());
+  });
+
+  it("Should have a task collection that starts empty", function() {
+    assert.strictEqual(0, hero.tasks.length);
+  });
+
+
 });
