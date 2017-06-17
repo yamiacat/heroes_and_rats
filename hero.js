@@ -40,6 +40,24 @@ Hero.prototype = {
     } else {
       this.health = 100;
     }
+  },
+  reportCompletedTasks: function() {
+    reportString = "Completed Tasks:\n";
+    for(task of this.tasks) {
+      if(task.completed === true) {
+        reportString += "* " + task.description + "\n";
+      }
+    }
+    return reportString;
+  },
+  reportUncompletedTasks: function() {
+    reportString = "Uncompleted Tasks:\n";
+    for(task of this.tasks) {
+      if(task.completed === false) {
+        reportString += "* " + task.description + "\n";
+      }
+    }
+    return reportString;
   }
 }
 

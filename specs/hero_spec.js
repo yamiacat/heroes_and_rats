@@ -119,4 +119,37 @@ var hero;
     assert.strictEqual(100, hero.health);
   });
 
+  it("Should be able to view completed tasks", function() {
+    hero.acceptTask(task);
+    hero.acceptTask(task2);
+    hero.completeTask(task);
+
+    assert.strictEqual("Completed Tasks:\n* Defeat the Ogre\n", hero.reportCompletedTasks());
+  });
+
+  it("Should be able to view multiple completed tasks", function() {
+    hero.acceptTask(task);
+    hero.acceptTask(task2);
+    hero.completeTask(task);
+    hero.completeTask(task2);
+
+    assert.strictEqual("Completed Tasks:\n* Defeat the Ogre\n* Chase the ghost out of the old mill\n", hero.reportCompletedTasks());
+  });
+
+  it("Should be able to view uncompleted tasks", function() {
+    hero.acceptTask(task);
+    hero.acceptTask(task2);
+    hero.completeTask(task2);
+
+    assert.strictEqual("Uncompleted Tasks:\n* Defeat the Ogre\n", hero.reportUncompletedTasks());
+  });
+
+  it("Should be able to view multiple uncompleted tasks", function() {
+    hero.acceptTask(task);
+    hero.acceptTask(task2);
+
+    assert.strictEqual("Uncompleted Tasks:\n* Defeat the Ogre\n* Chase the ghost out of the old mill\n", hero.reportUncompletedTasks());
+  });
+
+
 });

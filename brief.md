@@ -31,7 +31,7 @@ C. Create a constructor to create Food objects.
 - A hero should be able to eat food, and health should go up by the replenishment value
 - If the food is their favourite food, their health should go up by 1.5 * value. -->
 - A hero should be able to sort their tasks by difficulty, urgency or reward.
-- A hero should be able to view tasks that are marked as completed or incomplete.
+<!-- - A hero should be able to view tasks that are marked as completed or incomplete. -->
 
 ## Extension
 - Create a constructor to create Rat objects.
