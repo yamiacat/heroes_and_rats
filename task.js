@@ -40,21 +40,20 @@ var Task = function(description, difficulty, urgency, reward) {
 }
 
 Task.prototype = {
-  // getDifficulty: function () {
-  //   var taskDifficulty = this.difficulty;
-  //   var returnString =  DifficultyEnum.properties[taskDifficulty].name;
-  //   returnString.toString();
-  //   return returnString;
-  // },
+  getDifficultyValue: function () {
+    var taskDifficulty = this.difficulty;
+    var returnValue =  DifficultyEnum.properties[taskDifficulty].value;
+    return returnValue.valueOf();
+  },
   complete: function() {
     this.completed = true;
-  },
-  giveReward: function() {
-    return this.reward;
   }
 }
 
-
+  // task = new Task("Defeat the Ogre", DifficultyEnum.DIFFICULT, UrgencyEnum.SOONPLEASE, "Chainmail shirt");
+  //
+  //
+  // console.log(task.getDifficultyValue());
 
 
 module.exports = DifficultyEnum;
