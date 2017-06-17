@@ -4,14 +4,21 @@ var Task = require("../task.js");
 var DifficultyEnum = require("../task.js");
 var UrgencyEnum = require("../task.js");
 var Food = require("../food.js");
+var Rat = require("../rat.js");
 
 describe("Hero", function(){
 var hero;
+var task;
+var task2;
+var rat;
+var food1;
+var food2;
 
   beforeEach(function() {
     hero = new Hero("Mulan", "Dumpling");
     task = new Task("Defeat the Ogre", DifficultyEnum.DIFFICULT, UrgencyEnum.SOONPLEASE, "Chainmail shirt");
     task2 = new Task("Chase the ghost out of the old mill", DifficultyEnum.MEDIUM, UrgencyEnum.WHENEVER, "Bun");
+    rat = new Rat();
     food1 = new Food("Pancake", 10);
     food2 = new Food("Dumpling", 20);
   });
@@ -149,6 +156,14 @@ var hero;
     hero.acceptTask(task2);
 
     assert.strictEqual("Uncompleted Tasks:\n* Defeat the Ogre\n* Chase the ghost out of the old mill\n", hero.reportUncompletedTasks());
+  });
+
+  it("Should lose health from poisoned food", function() {
+    hero.acceptTask(task);
+    hero.completeTask(task);
+    rat.touch(food1);
+    hero.eat(food1);
+    assert.strictEqual(60, hero.health);
   });
 
 

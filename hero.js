@@ -35,6 +35,10 @@ Hero.prototype = {
       foodGain = (foodGain * 1.5);
     }
 
+    if(food.poison === true) {
+      foodGain -= (foodGain * 2);
+    }
+
     if(potentialHealth <= 100) {
       this.health += foodGain;
     } else {
