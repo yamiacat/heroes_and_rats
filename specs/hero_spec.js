@@ -1,8 +1,6 @@
 var assert = require("assert");
 var Hero = require("../hero.js");
 var Task = require("../task.js");
-var DifficultyEnum = require("../task.js");
-var UrgencyEnum = require("../task.js");
 var Food = require("../food.js");
 var Rat = require("../rat.js");
 
@@ -16,8 +14,8 @@ var food2;
 
   beforeEach(function() {
     hero = new Hero("Mulan", "Dumpling");
-    task = new Task("Defeat the Ogre", DifficultyEnum.DIFFICULT, UrgencyEnum.SOONPLEASE, "Chainmail shirt");
-    task2 = new Task("Chase the ghost out of the old mill", DifficultyEnum.MEDIUM, UrgencyEnum.WHENEVER, "Bun");
+    task = new Task("Defeat the Ogre", 3, 3, "Chainmail shirt");
+    task2 = new Task("Chase the ghost out of the old mill", 2, 1, "Bun");
     rat = new Rat();
     food1 = new Food("Pancake", 10);
     food2 = new Food("Dumpling", 20);

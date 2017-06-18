@@ -1,5 +1,3 @@
-var DifficultyEnum = require("./task.js");
-
 var Hero = function(name, favouriteFood) {
   this.name = name;
   this.favouriteFood = favouriteFood;
