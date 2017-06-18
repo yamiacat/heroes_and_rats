@@ -1,3 +1,5 @@
+var _ = require("lodash");
+
 var Hero = function(name, favouriteFood) {
   this.name = name;
   this.favouriteFood = favouriteFood;
@@ -14,19 +16,16 @@ Hero.prototype = {
     this.tasks.push(task);
   },
   completeTask: function(completedTask) {
-    // this.tasks.forEach(function(task) {
     for(task of this.tasks) {
       if(task === completedTask) {
         task.complete();
-        this.health -= 30;
-        // this.health -= (task.getDifficultyValue() * 10);
+        this.health -= (task.difficulty * 10);
         this.booty.push(task.reward);
       }
     };
   },
   eat: function(food) {
     var currentHealth = this.health;
-    var potentialHealth = currentHealth += food.foodValue;
     var foodGain = food.foodValue;
 
     if(food.foodName === this.favouriteFood) {
@@ -37,6 +36,8 @@ Hero.prototype = {
       foodGain -= (foodGain * 2);
     }
 
+    var potentialHealth = currentHealth += foodGain;
+
     if(potentialHealth <= 100) {
       this.health += foodGain;
     } else {
@@ -44,7 +45,7 @@ Hero.prototype = {
     }
   },
   reportCompletedTasks: function() {
-    reportString = "Completed Tasks:\n";
+    var reportString = "Completed Tasks:\n";
     for(task of this.tasks) {
       if(task.completed === true) {
         reportString += "* " + task.description + "\n";
@@ -53,12 +54,45 @@ Hero.prototype = {
     return reportString;
   },
   reportUncompletedTasks: function() {
-    reportString = "Uncompleted Tasks:\n";
+    var reportString = "Uncompleted Tasks:\n";
     for(task of this.tasks) {
       if(task.completed === false) {
         reportString += "* " + task.description + "\n";
       }
     }
+    return reportString;
+  },
+  reportTasksByDifficulty: function() {
+    var reportString = "Tasks in order of difficulty:\n";
+    var sortedTasks = _.sortBy(this.tasks, function(task) {
+      return task.difficulty;
+    });
+
+    for(task of sortedTasks) {
+      reportString += "* " + task.description + "\n";
+      }
+    return reportString;
+  },
+  reportTasksByUrgency: function() {
+    var reportString = "Tasks in order of urgency:\n";
+    var sortedTasks = _.sortBy(this.tasks, function(task) {
+      return task.urgency;
+    });
+
+    for(task of _.reverse(sortedTasks)) {
+      reportString += "* " + task.description + "\n";
+      }
+    return reportString;
+  },
+  reportTasksByReward: function() {
+    var reportString = "Tasks in order of reward:\n";
+    var sortedTasks = _.sortBy(this.tasks, function(task) {
+      return task.reward;
+    });
+
+    for(task of _.reverse(sortedTasks)) {
+      reportString += "* " + task.description + "\n";
+      }
     return reportString;
   }
 }

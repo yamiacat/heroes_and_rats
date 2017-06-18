@@ -49,27 +49,6 @@ Task.prototype = {
         return "No task, no urgency";
     }
   },
-  // getRewardDescription: function() {
-  //   switch(task.reward) {
-  //     case 1:
-  //       return "Trinkets";
-  //       break;
-  //     case 2:
-  //       return "Armour or weapons";
-  //       break;
-  //     case 3:
-  //       return "Silver & gold";
-  //       break;
-  //     case 4:
-  //       return "Gems";
-  //       break;
-  //     case 5:
-  //       return "Enchanted object";
-  //       break;
-  //     default:
-  //       return "No task, no reward";
-  //   }
-  // },
   getRewardDescription: function() {
     switch(this.reward) {
       case 1:

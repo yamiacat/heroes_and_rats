@@ -14,8 +14,9 @@ var food2;
 
   beforeEach(function() {
     hero = new Hero("Mulan", "Dumpling");
-    task = new Task("Defeat the Ogre", 3, 3, "Chainmail shirt");
-    task2 = new Task("Chase the ghost out of the old mill", 2, 1, "Bun");
+    task = new Task("Defeat the Ogre", 3, 1, 3);
+    task2 = new Task("Chase the ghost out of the old mill", 2, 2, 1);
+    task3 = new Task("Banish the King of Hell", 5, 5, 5);
     rat = new Rat();
     food1 = new Food("Pancake", 10);
     food2 = new Food("Dumpling", 20);
@@ -74,11 +75,11 @@ var food2;
     assert.strictEqual(70, hero.health);
   });
 
-  // it("Should be able to spend health to complete task proportionate to difficulty", function() {
-  //   hero.acceptTask(task2);
-  //   hero.completeTask(task2);
-  //   assert.strictEqual(80, hero.health);
-  // });
+  it("Should be able to spend health to complete task proportionate to difficulty", function() {
+    hero.acceptTask(task2);
+    hero.completeTask(task2);
+    assert.strictEqual(80, hero.health);
+  });
 
 
   it("Should have a bootycollection that starts empty", function() {
@@ -162,6 +163,30 @@ var food2;
     rat.touch(food1);
     hero.eat(food1);
     assert.strictEqual(60, hero.health);
+  });
+
+  it("Should be able to view tasks by difficulty", function() {
+    hero.acceptTask(task);
+    hero.acceptTask(task2);
+    hero.acceptTask(task3);
+
+    assert.strictEqual("Tasks in order of difficulty:\n* Chase the ghost out of the old mill\n* Defeat the Ogre\n* Banish the King of Hell\n", hero.reportTasksByDifficulty());
+  });
+
+  it("Should be able to view tasks by urgency", function() {
+    hero.acceptTask(task);
+    hero.acceptTask(task2);
+    hero.acceptTask(task3);
+
+    assert.strictEqual("Tasks in order of urgency:\n* Banish the King of Hell\n* Chase the ghost out of the old mill\n* Defeat the Ogre\n", hero.reportTasksByUrgency());
+  });
+
+  it("Should be able to view tasks by reward", function() {
+    hero.acceptTask(task);
+    hero.acceptTask(task2);
+    hero.acceptTask(task3);
+
+    assert.strictEqual("Tasks in order of reward:\n* Banish the King of Hell\n* Defeat the Ogre\n* Chase the ghost out of the old mill\n", hero.reportTasksByReward());
   });
 
 
